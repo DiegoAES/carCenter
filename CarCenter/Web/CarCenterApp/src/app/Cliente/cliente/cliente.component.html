@@ -1,0 +1,77 @@
+<div class="container">
+    <table border="1">
+        <tr>
+            <td>
+                Primer Nombre
+            </td>
+            <td>
+                Primer Apellido
+            </td>
+            <td>
+                Documento
+            </td>
+            <td>
+                Acciones
+            </td>
+        </tr>
+        <tr *ngFor="let cliente of clientes; let i = index ">
+            <td>
+                  {{ cliente.PrimerNombre  }} 
+            </td>
+            <td>
+                {{ cliente.PrimerApellido  }} 
+            </td>
+            <td>
+                {{ cliente.Documento  }} 
+            </td>
+            <td>
+                <button (click)="seleccionar(cliente.ClienteId)"> Editar </button> 
+                <button (click)="Eliminar(cliente.ClienteId)"> Eliminar </button> 
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<h3 style="padding-top: 20px;"> Crear Editar </h3>
+<div class="form-group" >
+    <span> Primer Nombre </span>
+    <input type="text" [(ngModel)]="cliente.PrimerNombre" >
+</div>
+<div class="form-group" style="padding-top: 10px;">
+    <span> Segundo Nombre </span>
+    <input type="text" [(ngModel)]="cliente.SegundoNombre" >
+</div>
+<div class="form-group" style="padding-top: 10px;">
+    <span> PrimerApellido </span>
+    <input type="text" [(ngModel)]="cliente.PrimerApellido" >
+</div>
+<div class="form-group" style="padding-top: 10px;">
+    <span> SegundoApellido </span>
+    <input type="text" [(ngModel)]="cliente.SegundoApellido" >
+</div>
+<div class="form-group" style="padding-top: 10px;">
+    <span> TipoDocumento </span>
+    <input type="text" [(ngModel)]="cliente.TipoDocumento" >
+</div>
+<div class="form-group" style="padding-top: 10px;">
+    <span> Documento </span>
+    <input type="text" [(ngModel)]="cliente.Documento" >
+</div>
+<div class="form-group" style="padding-top: 10px;">
+    <span> Celular </span>
+    <input type="text" [(ngModel)]="cliente.Celular" >
+</div>
+<div class="form-group" style="padding-top: 10px;">
+    <span> Direccion </span>
+    <input type="text" [(ngModel)]="cliente.Direccion" >
+</div>
+<div class="form-group" style="padding-top: 10px;">
+    <span> Email </span>
+    <input type="text" [(ngModel)]="cliente.Email" >
+</div>
+<div class="form-group" style="padding-top: 10px;">
+    <button *ngIf="cliente.ClienteId === undefined" (click)=Guardar()>Guardar</button>
+    <button *ngIf="cliente.ClienteId !== undefined" (click)=Editar()>Editar</button>
+    <button *ngIf="cliente.ClienteId !== undefined" (click)=Cancelar()>Cancelar</button>
+</div>
