@@ -1,0 +1,12 @@
+F:\Diego\Pruebas\DiegoEstupiñan\CarCenter\Datos\bin\Debug\Datos.dll.config
+F:\Diego\Pruebas\DiegoEstupiñan\CarCenter\Datos\bin\Debug\Datos.dll
+F:\Diego\Pruebas\DiegoEstupiñan\CarCenter\Datos\bin\Debug\Datos.pdb
+F:\Diego\Pruebas\DiegoEstupiñan\CarCenter\Datos\bin\Debug\EntityFramework.dll
+F:\Diego\Pruebas\DiegoEstupiñan\CarCenter\Datos\bin\Debug\EntityFramework.SqlServer.dll
+F:\Diego\Pruebas\DiegoEstupiñan\CarCenter\Datos\bin\Debug\EntityFramework.xml
+F:\Diego\Pruebas\DiegoEstupiñan\CarCenter\Datos\bin\Debug\EntityFramework.SqlServer.xml
+F:\Diego\Pruebas\DiegoEstupiñan\CarCenter\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+F:\Diego\Pruebas\DiegoEstupiñan\CarCenter\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+F:\Diego\Pruebas\DiegoEstupiñan\CarCenter\Datos\obj\Debug\Datos.csproj.CopyComplete
+F:\Diego\Pruebas\DiegoEstupiñan\CarCenter\Datos\obj\Debug\Datos.dll
+F:\Diego\Pruebas\DiegoEstupiñan\CarCenter\Datos\obj\Debug\Datos.pdb

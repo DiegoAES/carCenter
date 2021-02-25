@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "CarCenter\WebApi.csproj", "{F57FE348-5CF6-4F9C-9CFC-B8DD8068D639}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{7101DCC2-7B78-4020-B549-63179E09706D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{34B08675-51A2-4202-935F-231F56A75124}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F57FE348-5CF6-4F9C-9CFC-B8DD8068D639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F57FE348-5CF6-4F9C-9CFC-B8DD8068D639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F57FE348-5CF6-4F9C-9CFC-B8DD8068D639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F57FE348-5CF6-4F9C-9CFC-B8DD8068D639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7101DCC2-7B78-4020-B549-63179E09706D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7101DCC2-7B78-4020-B549-63179E09706D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7101DCC2-7B78-4020-B549-63179E09706D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7101DCC2-7B78-4020-B549-63179E09706D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34B08675-51A2-4202-935F-231F56A75124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34B08675-51A2-4202-935F-231F56A75124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34B08675-51A2-4202-935F-231F56A75124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34B08675-51A2-4202-935F-231F56A75124}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C401AA22-1FB3-4D0B-8B5B-F3B05D17D632}
+	EndGlobalSection
+EndGlobal

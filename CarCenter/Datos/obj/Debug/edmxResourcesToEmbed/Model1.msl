@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CarCenterModelStoreContainer" CdmEntityContainer="CarCenterEntities">
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="CarCenterModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+          <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+          <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facturas">
+      <EntityTypeMapping TypeName="CarCenterModel.Factura">
+        <MappingFragment StoreEntitySet="Factura">
+          <ScalarProperty Name="FacturaId" ColumnName="FacturaId" />
+          <ScalarProperty Name="TiendaId" ColumnName="TiendaId" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+          <ScalarProperty Name="MecanicoId" ColumnName="MecanicoId" />
+          <ScalarProperty Name="TotalFactura" ColumnName="TotalFactura" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mecanicoes">
+      <EntityTypeMapping TypeName="CarCenterModel.Mecanico">
+        <MappingFragment StoreEntitySet="Mecanico">
+          <ScalarProperty Name="MecanicoId" ColumnName="MecanicoId" />
+          <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+          <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Repuestoes">
+      <EntityTypeMapping TypeName="CarCenterModel.Repuesto">
+        <MappingFragment StoreEntitySet="Repuesto">
+          <ScalarProperty Name="RepuestoId" ColumnName="RepuestoId" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="PrecioPorUnidad" ColumnName="PrecioPorUnidad" />
+          <ScalarProperty Name="UnidadesDisponibles" ColumnName="UnidadesDisponibles" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CarCenterModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tiendas">
+      <EntityTypeMapping TypeName="CarCenterModel.Tienda">
+        <MappingFragment StoreEntitySet="Tienda">
+          <ScalarProperty Name="TiendaId" ColumnName="TiendaId" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacturaRepuestos">
+      <EntityTypeMapping TypeName="CarCenterModel.FacturaRepuesto">
+        <MappingFragment StoreEntitySet="FacturaRepuestos">
+          <ScalarProperty Name="FacturaRepuestoId" ColumnName="FacturaRepuestoId" />
+          <ScalarProperty Name="NumeroUnidades" ColumnName="NumeroUnidades" />
+          <ScalarProperty Name="ValorDescuentoRepuestos" ColumnName="ValorDescuentoRepuestos" />
+          <ScalarProperty Name="ValorManoObra" ColumnName="ValorManoObra" />
+          <ScalarProperty Name="ValorDescuentoManoObra" ColumnName="ValorDescuentoManoObra" />
+          <ScalarProperty Name="FacturaId" ColumnName="FacturaId" />
+          <ScalarProperty Name="RepuestoId" ColumnName="RepuestoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

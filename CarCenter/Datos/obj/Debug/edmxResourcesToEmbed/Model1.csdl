@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="ClienteId" />
+    </Key>
+    <Property Name="ClienteId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PrimerNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SegundoNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SegundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TipoDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Documento" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Celular" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Facturas" Relationship="Self.FK_Factura_Cliente" FromRole="Cliente" ToRole="Factura" />
+  </EntityType>
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="FacturaId" />
+    </Key>
+    <Property Name="FacturaId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TiendaId" Type="Int64" />
+    <Property Name="ClienteId" Type="Int64" />
+    <Property Name="MecanicoId" Type="Int64" />
+    <Property Name="TotalFactura" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK_Factura_Cliente" FromRole="Factura" ToRole="Cliente" />
+    <NavigationProperty Name="Mecanico" Relationship="Self.FK_Factura_Mecanico" FromRole="Factura" ToRole="Mecanico" />
+    <NavigationProperty Name="Tienda" Relationship="Self.FK_Factura_Tienda" FromRole="Factura" ToRole="Tienda" />
+    <NavigationProperty Name="FacturaRepuestos" Relationship="Self.FK_FacturaRepuestos_Factura" FromRole="Factura" ToRole="FacturaRepuestos" />
+  </EntityType>
+  <EntityType Name="Mecanico">
+    <Key>
+      <PropertyRef Name="MecanicoId" />
+    </Key>
+    <Property Name="MecanicoId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PrimerNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SegundoNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SegundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TipoDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Documento" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Celular" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Estado" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Facturas" Relationship="Self.FK_Factura_Mecanico" FromRole="Mecanico" ToRole="Factura" />
+  </EntityType>
+  <EntityType Name="Repuesto">
+    <Key>
+      <PropertyRef Name="RepuestoId" />
+    </Key>
+    <Property Name="RepuestoId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PrecioPorUnidad" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="UnidadesDisponibles" Type="Int32" />
+    <NavigationProperty Name="FacturaRepuestos" Relationship="Self.FK_FacturaRepuestos_Repuesto" FromRole="Repuesto" ToRole="FacturaRepuestos" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tienda">
+    <Key>
+      <PropertyRef Name="TiendaId" />
+    </Key>
+    <Property Name="TiendaId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Facturas" Relationship="Self.FK_Factura_Tienda" FromRole="Tienda" ToRole="Factura" />
+  </EntityType>
+  <EntityType Name="FacturaRepuesto">
+    <Key>
+      <PropertyRef Name="FacturaRepuestoId" />
+    </Key>
+    <Property Name="FacturaRepuestoId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumeroUnidades" Type="Int32" />
+    <Property Name="ValorDescuentoRepuestos" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ValorManoObra" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ValorDescuentoManoObra" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FacturaId" Type="Int64" />
+    <Property Name="RepuestoId" Type="Int64" />
+    <NavigationProperty Name="Factura" Relationship="Self.FK_FacturaRepuestos_Factura" FromRole="FacturaRepuestos" ToRole="Factura" />
+    <NavigationProperty Name="Repuesto" Relationship="Self.FK_FacturaRepuestos_Repuesto" FromRole="FacturaRepuestos" ToRole="Repuesto" />
+  </EntityType>
+  <Association Name="FK_Factura_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClienteId" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="ClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Factura_Mecanico">
+    <End Role="Mecanico" Type="Self.Mecanico" Multiplicity="0..1" />
+    <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mecanico">
+        <PropertyRef Name="MecanicoId" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="MecanicoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Factura_Tienda">
+    <End Role="Tienda" Type="Self.Tienda" Multiplicity="0..1" />
+    <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tienda">
+        <PropertyRef Name="TiendaId" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="TiendaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FacturaRepuestos_Factura">
+    <End Role="Factura" Type="Self.Factura" Multiplicity="0..1" />
+    <End Role="FacturaRepuestos" Type="Self.FacturaRepuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Factura">
+        <PropertyRef Name="FacturaId" />
+      </Principal>
+      <Dependent Role="FacturaRepuestos">
+        <PropertyRef Name="FacturaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FacturaRepuestos_Repuesto">
+    <End Role="Repuesto" Type="Self.Repuesto" Multiplicity="0..1" />
+    <End Role="FacturaRepuestos" Type="Self.FacturaRepuesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Repuesto">
+        <PropertyRef Name="RepuestoId" />
+      </Principal>
+      <Dependent Role="FacturaRepuestos">
+        <PropertyRef Name="RepuestoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CarCenterEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+    <EntitySet Name="Facturas" EntityType="Self.Factura" />
+    <EntitySet Name="Mecanicoes" EntityType="Self.Mecanico" />
+    <EntitySet Name="Repuestoes" EntityType="Self.Repuesto" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Tiendas" EntityType="Self.Tienda" />
+    <EntitySet Name="FacturaRepuestos" EntityType="Self.FacturaRepuesto" />
+    <AssociationSet Name="FK_Factura_Cliente" Association="Self.FK_Factura_Cliente">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="Factura" EntitySet="Facturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Factura_Mecanico" Association="Self.FK_Factura_Mecanico">
+      <End Role="Mecanico" EntitySet="Mecanicoes" />
+      <End Role="Factura" EntitySet="Facturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Factura_Tienda" Association="Self.FK_Factura_Tienda">
+      <End Role="Tienda" EntitySet="Tiendas" />
+      <End Role="Factura" EntitySet="Facturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FacturaRepuestos_Factura" Association="Self.FK_FacturaRepuestos_Factura">
+      <End Role="Factura" EntitySet="Facturas" />
+      <End Role="FacturaRepuestos" EntitySet="FacturaRepuestos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FacturaRepuestos_Repuesto" Association="Self.FK_FacturaRepuestos_Repuesto">
+      <End Role="Repuesto" EntitySet="Repuestoes" />
+      <End Role="FacturaRepuestos" EntitySet="FacturaRepuestos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

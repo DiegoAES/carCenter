@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="ClienteId" />
+    </Key>
+    <Property Name="ClienteId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrimerNombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="SegundoNombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="PrimerApellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="SegundoApellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="TipoDocumento" Type="nvarchar" MaxLength="50" />
+    <Property Name="Documento" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Celular" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="FacturaId" />
+    </Key>
+    <Property Name="FacturaId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TiendaId" Type="bigint" />
+    <Property Name="ClienteId" Type="bigint" />
+    <Property Name="MecanicoId" Type="bigint" />
+    <Property Name="TotalFactura" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="fecha" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CarCenter.dbo.FacturaRepuestos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="FacturaRepuestos">
+    <Key>
+      <PropertyRef Name="FacturaRepuestoId" />
+    </Key>
+    <Property Name="FacturaRepuestoId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumeroUnidades" Type="int" />
+    <Property Name="ValorDescuentoRepuestos" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ValorManoObra" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ValorDescuentoManoObra" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="FacturaId" Type="bigint" />
+    <Property Name="RepuestoId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Mecanico">
+    <Key>
+      <PropertyRef Name="MecanicoId" />
+    </Key>
+    <Property Name="MecanicoId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrimerNombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="SegundoNombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="PrimerApellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="SegundoApellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="TipoDocumento" Type="nvarchar" MaxLength="50" />
+    <Property Name="Documento" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Celular" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Estado" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Repuesto">
+    <Key>
+      <PropertyRef Name="RepuestoId" />
+    </Key>
+    <Property Name="RepuestoId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="PrecioPorUnidad" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="UnidadesDisponibles" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tienda">
+    <Key>
+      <PropertyRef Name="TiendaId" />
+    </Key>
+    <Property Name="TiendaId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_Factura_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClienteId" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="ClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Factura_Mecanico">
+    <End Role="Mecanico" Type="Self.Mecanico" Multiplicity="0..1" />
+    <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mecanico">
+        <PropertyRef Name="MecanicoId" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="MecanicoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Factura_Tienda">
+    <End Role="Tienda" Type="Self.Tienda" Multiplicity="0..1" />
+    <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tienda">
+        <PropertyRef Name="TiendaId" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="TiendaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FacturaRepuestos_Factura">
+    <End Role="Factura" Type="Self.Factura" Multiplicity="0..1" />
+    <End Role="FacturaRepuestos" Type="Self.FacturaRepuestos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Factura">
+        <PropertyRef Name="FacturaId" />
+      </Principal>
+      <Dependent Role="FacturaRepuestos">
+        <PropertyRef Name="FacturaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FacturaRepuestos_Repuesto">
+    <End Role="Repuesto" Type="Self.Repuesto" Multiplicity="0..1" />
+    <End Role="FacturaRepuestos" Type="Self.FacturaRepuestos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Repuesto">
+        <PropertyRef Name="RepuestoId" />
+      </Principal>
+      <Dependent Role="FacturaRepuestos">
+        <PropertyRef Name="RepuestoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CarCenterModelStoreContainer">
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mecanico" EntityType="Self.Mecanico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Repuesto" EntityType="Self.Repuesto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tienda" EntityType="Self.Tienda" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FacturaRepuestos" EntityType="Self.FacturaRepuestos" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [FacturaRepuestos].[FacturaRepuestoId] AS [FacturaRepuestoId], 
+    [FacturaRepuestos].[NumeroUnidades] AS [NumeroUnidades], 
+    [FacturaRepuestos].[ValorDescuentoRepuestos] AS [ValorDescuentoRepuestos], 
+    [FacturaRepuestos].[ValorManoObra] AS [ValorManoObra], 
+    [FacturaRepuestos].[ValorDescuentoManoObra] AS [ValorDescuentoManoObra], 
+    [FacturaRepuestos].[FacturaId] AS [FacturaId], 
+    [FacturaRepuestos].[RepuestoId] AS [RepuestoId]
+    FROM [dbo].[FacturaRepuestos] AS [FacturaRepuestos]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Factura_Cliente" Association="Self.FK_Factura_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Factura" EntitySet="Factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Factura_Mecanico" Association="Self.FK_Factura_Mecanico">
+      <End Role="Mecanico" EntitySet="Mecanico" />
+      <End Role="Factura" EntitySet="Factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Factura_Tienda" Association="Self.FK_Factura_Tienda">
+      <End Role="Tienda" EntitySet="Tienda" />
+      <End Role="Factura" EntitySet="Factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FacturaRepuestos_Factura" Association="Self.FK_FacturaRepuestos_Factura">
+      <End Role="Factura" EntitySet="Factura" />
+      <End Role="FacturaRepuestos" EntitySet="FacturaRepuestos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FacturaRepuestos_Repuesto" Association="Self.FK_FacturaRepuestos_Repuesto">
+      <End Role="Repuesto" EntitySet="Repuesto" />
+      <End Role="FacturaRepuestos" EntitySet="FacturaRepuestos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

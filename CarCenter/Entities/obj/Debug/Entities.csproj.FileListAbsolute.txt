@@ -1,0 +1,5 @@
+F:\Diego\Pruebas\DiegoEstupiñan\CarCenter\Entities\bin\Debug\Entities.dll
+F:\Diego\Pruebas\DiegoEstupiñan\CarCenter\Entities\bin\Debug\Entities.pdb
+F:\Diego\Pruebas\DiegoEstupiñan\CarCenter\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.cache
+F:\Diego\Pruebas\DiegoEstupiñan\CarCenter\Entities\obj\Debug\Entities.dll
+F:\Diego\Pruebas\DiegoEstupiñan\CarCenter\Entities\obj\Debug\Entities.pdb
